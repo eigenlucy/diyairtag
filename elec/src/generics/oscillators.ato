@@ -17,9 +17,6 @@ module Oscillator:
     load_cap_1 = new Capacitor
     load_cap_2 = new Capacitor
 
-    load_cap_1.package = "0402"
-    load_cap_2.package = "0402"
-
     xin.io ~ crystal.xin
     xout.io ~ crystal.xout
 
@@ -27,5 +24,16 @@ module Oscillator:
     xout.gnd ~ gnd
     crystal.gnd ~ gnd
 
-    crystal.xin ~ load_cap_1.p1; load_cap_1.p2 ~ gnd
-    crystal.xout ~ load_cap_2.p1; load_cap_2.p2 ~ gnd
+    crystal.xin ~ load_cap_1.1; load_cap_1.2 ~ gnd
+    crystal.xout ~ load_cap_2.1; load_cap_2.2 ~ gnd
+
+component X322516MLB4SI:
+    # component X322516MLB4SI
+    footprint = "OSC-SMD_4P-L3.2-W2.5-BL"
+    lcsc_id = "C13738"
+    mpn = "C13738"
+    # pins
+    signal gnd ~ pin 4
+    gnd ~ pin 2
+    signal xout ~ pin 1
+    signal xin ~ pin 3
