@@ -2,8 +2,8 @@ from "generics/capacitors.ato" import Capacitor
 
 module Oscillator:
     crystal = new X322516MLB4SI
-    C1 = new Capacitor; C1.value = 9pF +/- 5%; C1.package = "0201"
-    C2 = new Capacitor; C2.value = 9pF +/- 5%; C2.package = "0201"
+    C1 = new Capacitor; C1.value = 9pF; C1.package = "0201"
+    C2 = new Capacitor; C2.value = 9pF; C2.package = "0201"
     signal XC1 ~ crystal.xin; crystal.xin ~ C1.p1; signal gnd ~ C1.p2
     signal XC2 ~ crystal.xout; crystal.xout ~ C2.p1; gnd ~ C2.p2
 
@@ -17,4 +17,3 @@ component X322516MLB4SI:
     gnd ~ pin 2
     signal xout ~ pin 1
     signal xin ~ pin 3
-
