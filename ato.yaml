@@ -2,5 +2,10 @@ ato-version: ^0.2.0
 builds:
   default:
     entry: elec/src/diyairtag.ato:Diyairtag
+  nrf51822:
+    entry: elec/src/nrf51822.ato:Nrf51822
 dependencies:
-- generics
+- name: generics
+  version_spec: '@93de318f38c5acb079fb5cfc9d5a06dc5f02b157'
+  link_broken: true
+  path: elec/src/generics

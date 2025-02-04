@@ -1,0 +1,56 @@
+component nRF51822_minus_QFAA_minus_R:
+    # component nRF51822_minus_QFAA_minus_R
+    footprint = "QFN-48_L6.0-W6.0-P0.40-BL-EP3.8"
+    lcsc_id = "C38167"
+    mpn = "C38167"
+    # pins
+    signal VDD ~ pin 1
+    signal DCC ~ pin 2
+    signal P0_period_30 ~ pin 3
+    signal P0_period_00 ~ pin 4
+    signal P0_period_01 ~ pin 5
+    signal P0_period_02 ~ pin 6
+    signal P0_period_03 ~ pin 7
+    signal P0_period_04 ~ pin 8
+    signal P0_period_05 ~ pin 9
+    signal P0_period_06 ~ pin 10
+    signal P0_period_07 ~ pin 11
+    VDD ~ pin 12
+    signal VSS ~ pin 13
+    signal P0_period_08 ~ pin 14
+    signal P0_period_09 ~ pin 15
+    signal P0_period_10 ~ pin 16
+    signal P0_period_11 ~ pin 17
+    signal P0_period_12 ~ pin 18
+    signal P0_period_13 ~ pin 19
+    signal P0_period_14 ~ pin 20
+    signal P0_period_15 ~ pin 21
+    signal P0_period_16 ~ pin 22
+    signal SWDIO_slash_nRESET ~ pin 23
+    signal SWDCLK ~ pin 24
+    signal P0_period_17 ~ pin 25
+    signal P0_period_18 ~ pin 26
+    signal P0_period_19 ~ pin 27
+    signal P0_period_20 ~ pin 28
+    signal DEC2 ~ pin 29
+    signal VDD_PA ~ pin 30
+    signal ANT1 ~ pin 31
+    signal ANT2 ~ pin 32
+    VSS ~ pin 33
+    VSS ~ pin 34
+    signal AVDD ~ pin 35
+    AVDD ~ pin 36
+    signal XC1 ~ pin 37
+    signal XC2 ~ pin 38
+    signal DEC1 ~ pin 39
+    signal P0_period_21 ~ pin 40
+    signal P0_period_22 ~ pin 41
+    signal P0_period_23 ~ pin 42
+    signal P0_period_24 ~ pin 43
+    signal P0_period_25 ~ pin 44
+    signal P0_period_26 ~ pin 45
+    signal P0_period_27 ~ pin 46
+    signal P0_period_28 ~ pin 47
+    signal P0_period_29 ~ pin 48
+    signal EP ~ pin 49
+
