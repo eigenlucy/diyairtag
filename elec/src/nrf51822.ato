@@ -3,6 +3,7 @@ from "generics/resistors.ato" import Resistor
 from "generics/capacitors.ato" import Capacitor
 from "generics/oscillators.ato" import Oscillator
 from "X322516MLB4SI.ato" import X322516MLB4SI
+
 module Nrf51822:
     power = new Power
     ic = new nRF51822_minus_QFAA_minus_R
@@ -11,8 +12,8 @@ module Nrf51822:
     power ~ C_vdd1.power; power.vcc ~ ic.VDD
     C_vdd2 = new Capacitor; C_vdd2.value = 100nF +/- 20%; C_vdd2.package = "0201"
     power ~ C_vdd2.power; power.vcc ~ ic.VDD
-    C_avdd = new Capacitor; C_avdd.value = 1nF +/- 20%; C_avdd.package = "0201"
-    power ~ C_avdd.power; power.vcc ~ ic.AVDD
+    C_avdd1 = new Capacitor; C_avdd1.value = 1nF +/- 20%; C_avdd1.package = "0201"
+    power ~ C_avdd1.power; power.vcc ~ ic.AVDD
     C_dec1 = new Capacitor; C_dec1.value = 100nF +/- 20%; C_dec1.package = "0201"
     C_dec1.p1 ~ ic.DEC1; C_dec1.p2 ~ power.gnd
     C_dec2 = new Capacitor; C_dec2.value = 47uF +/- 20%; C_dec2.package = "0603"
@@ -21,14 +22,13 @@ module Nrf51822:
     osc = new Oscillator
     osc.crystal -> X322516MLB4SI
     # 9pF load caps for X322516MLB4SI crystal
-    load_cap_1.value = 9pF +/- 5%; load_cap_1.package = "0201"
-    load_cap_2.value = 9pF +/- 5%; load_cap_2.package = "0201"
+    osc.load_cap_1.value = 9pF +/- 5%; osc.load_cap_1.package = "0201"
+    osc.load_cap_2.value = 9pF +/- 5%; osc.load_cap_2.package = "0201"
 
 component nRF51822_minus_QFAA_minus_R:
     # component nRF51822_minus_QFAA_minus_R
     footprint = "QFN-48_L6.0-W6.0-P0.40-BL-EP3.8"
     lcsc_id = "C38167"
-    mpn = "C38167"
     # pins
     signal VDD ~ pin 1
     signal DCC ~ pin 2
