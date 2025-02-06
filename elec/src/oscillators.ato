@@ -1,0 +1,13 @@
+component Crystal:
+    signal xin
+    signal xout
+    signal gnd
+
+module Oscillator:
+    signal xin
+    signal xout
+    signal gnd ~ xin
+    gnd ~ xout
+    crystal = new Crystal
+    xin ~ crystal.xin
+    xout ~ crystal.xout

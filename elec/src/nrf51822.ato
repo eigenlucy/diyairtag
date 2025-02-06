@@ -1,81 +1,26 @@
 from "generics/interfaces.ato" import Power
 from "generics/resistors.ato" import Resistor
 from "generics/capacitors.ato" import Capacitor
-from "generics/oscillators.ato" import Oscillator
 from "X322516MLB4SI.ato" import X322516MLB4SI
+from "nRF51822_minus_QFAA_minus_R.ato" import nRF51822_minus_QFAA_minus_R
 
 module Nrf51822:
     power = new Power
     ic = new nRF51822_minus_QFAA_minus_R
+    osc = new X322516MLB4SI
     power.gnd ~ ic.VSS
-    C_vdd1 = new Capacitor; C_vdd1.value = 4.7uF +/- 20%; C_vdd1.package = "0402"
-    power ~ C_vdd1.power; power.vcc ~ ic.VDD
-    C_vdd2 = new Capacitor; C_vdd2.value = 100nF +/- 20%; C_vdd2.package = "0201"
-    power ~ C_vdd2.power; power.vcc ~ ic.VDD
-    C_avdd1 = new Capacitor; C_avdd1.value = 1nF +/- 20%; C_avdd1.package = "0201"
-    power ~ C_avdd1.power; power.vcc ~ ic.AVDD
-    C_dec1 = new Capacitor; C_dec1.value = 100nF +/- 20%; C_dec1.package = "0201"
-    C_dec1.p1 ~ ic.DEC1; C_dec1.p2 ~ power.gnd
-    C_dec2 = new Capacitor; C_dec2.value = 47uF +/- 20%; C_dec2.package = "0603"
-    C_dec2.p1 ~ ic.DEC2; C_dec2.p2 ~ power.gnd
-
-    osc = new Oscillator
-    osc.crystal -> X322516MLB4SI
+    Cvdd1 = new Capacitor; Cvdd1.value = 4.7uF +/- 20%; Cvdd1.package = "0603"
+    power ~ Cvdd1.power; power.vcc ~ ic.VDD
+    Cvdd2 = new Capacitor; Cvdd2.value = 100nF +/- 10%; Cvdd2.package = "0402"
+    power ~ Cvdd2.power; power.vcc ~ ic.VDD
+    Cavdd1 = new Capacitor; Cavdd1.value = 1nF +/- 10%; Cavdd1.package = "0402"
+    power ~ Cavdd1.power; power.vcc ~ ic.AVDD
+    Cdec1 = new Capacitor; Cdec1.value = 100nF +/- 20%; Cdec1.package = "0402"
+    Cdec1.p1 ~ ic.DEC1; Cdec1.p2 ~ power.gnd
+    Cdec2 = new Capacitor; Cdec2.value = 47nF +/- 20%; Cdec2.package = "0402"
+    Cdec2.p1 ~ ic.DEC2; Cdec2.p2 ~ power.gnd
     # 9pF load caps for X322516MLB4SI crystal
-    osc.load_cap_1.value = 9pF +/- 5%; osc.load_cap_1.package = "0201"
-    osc.load_cap_2.value = 9pF +/- 5%; osc.load_cap_2.package = "0201"
-
-component nRF51822_minus_QFAA_minus_R:
-    # component nRF51822_minus_QFAA_minus_R
-    footprint = "QFN-48_L6.0-W6.0-P0.40-BL-EP3.8"
-    lcsc_id = "C38167"
-    # pins
-    signal VDD ~ pin 1
-    signal DCC ~ pin 2
-    signal P0_period_30 ~ pin 3
-    signal P0_period_00 ~ pin 4
-    signal P0_period_01 ~ pin 5
-    signal P0_period_02 ~ pin 6
-    signal P0_period_03 ~ pin 7
-    signal P0_period_04 ~ pin 8
-    signal P0_period_05 ~ pin 9
-    signal P0_period_06 ~ pin 10
-    signal P0_period_07 ~ pin 11
-    VDD ~ pin 12
-    signal VSS ~ pin 13
-    signal P0_period_08 ~ pin 14
-    signal P0_period_09 ~ pin 15
-    signal P0_period_10 ~ pin 16
-    signal P0_period_11 ~ pin 17
-    signal P0_period_12 ~ pin 18
-    signal P0_period_13 ~ pin 19
-    signal P0_period_14 ~ pin 20
-    signal P0_period_15 ~ pin 21
-    signal P0_period_16 ~ pin 22
-    signal SWDIO_slash_nRESET ~ pin 23
-    signal SWDCLK ~ pin 24
-    signal P0_period_17 ~ pin 25
-    signal P0_period_18 ~ pin 26
-    signal P0_period_19 ~ pin 27
-    signal P0_period_20 ~ pin 28
-    signal DEC2 ~ pin 29
-    signal VDD_PA ~ pin 30
-    signal ANT1 ~ pin 31
-    signal ANT2 ~ pin 32
-    VSS ~ pin 33
-    VSS ~ pin 34
-    signal AVDD ~ pin 35
-    AVDD ~ pin 36
-    signal XC1 ~ pin 37
-    signal XC2 ~ pin 38
-    signal DEC1 ~ pin 39
-    signal P0_period_21 ~ pin 40
-    signal P0_period_22 ~ pin 41
-    signal P0_period_23 ~ pin 42
-    signal P0_period_24 ~ pin 43
-    signal P0_period_25 ~ pin 44
-    signal P0_period_26 ~ pin 45
-    signal P0_period_27 ~ pin 46
-    signal P0_period_28 ~ pin 47
-    signal P0_period_29 ~ pin 48
-    signal EP ~ pin 49
+    loadcap1 = new Capacitor; loadcap1.value = 9pF +/- 5%; loadcap1.package = "0402"
+    loadcap2 = new Capacitor; loadcap2.value = 9pF +/- 5%; loadcap2.package = "0402"
+    osc.xin ~ loadcap1.p1; loadcap1.p2 ~ power.gnd
+    osc.xout ~ loadcap2.p1; loadcap2.p2 ~ power.gnd
