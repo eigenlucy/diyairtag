@@ -1,0 +1,9 @@
+component YAGEO_CC0201CRNPO9BN9R0:
+    """YAGEO_CC0201CRNPO9BN9R0 component"""
+    lcsc_id = "C277498"
+    manufacturer = "YAGEO"
+    mpn = "CC0201CRNPO9BN9R0"
+    designator_prefix = "C"
+    signal p1 ~ pin 1
+    signal p2 ~ pin 2
+

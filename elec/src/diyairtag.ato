@@ -1,2 +1,4 @@
+from "nrf51822.ato" import Nrf51822
+
 module Diyairtag:
-    signal gnd
+    uc = new Nrf51822
